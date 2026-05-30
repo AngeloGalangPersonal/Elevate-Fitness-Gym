@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate Life & Fitness — Quezon City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ed;
+    --gold: #f5890a;
+    --gold-light: #ff9f2e;
+    --gold-dim: #a35e00;
+    --charcoal: #1a1a1a;
+    --mid: #2e2e2e;
+    --muted: #888;
+    --accent: #f5890a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--white); font-size: 0.8rem;
+    letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400;
+    opacity: 0.75; transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--black); border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1.4rem;
+    cursor: pointer; transition: background 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 40%, rgba(245,137,10,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(245,137,10,0.04) 0%, transparent 50%);
+  }
+  .hero-lines {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .hero-lines::before {
+    content: '';
+    position: absolute; top: -20%; right: -5%;
+    width: 55%; height: 140%;
+    border-left: 1px solid rgba(245,137,10,0.12);
+    transform: rotate(-8deg);
+  }
+  .hero-lines::after {
+    content: '';
+    position: absolute; top: -20%; right: 8%;
+    width: 55%; height: 140%;
+    border-left: 1px solid rgba(245,137,10,0.06);
+    transform: rotate(-8deg);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 10rem 3rem 4rem;
+    max-width: 900px;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem; font-weight: 400;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+  h1 em { color: var(--gold); font-style: normal; display: block; }
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.7; color: rgba(245,242,237,0.65);
+    max-width: 500px; margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 1.5rem; }
+  .btn-primary {
+    background: var(--gold); color: var(--black);
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+    padding: 0.9rem 2.2rem; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--white); font-size: 0.78rem; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    border-bottom: 1px solid rgba(245,242,237,0.3);
+    padding-bottom: 2px; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-badges {
+    position: relative; z-index: 2;
+    display: flex; gap: 2rem; padding: 1.5rem 3rem;
+    border-top: 1px solid rgba(245,242,237,0.08);
+  }
+  .badge {
+    display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .badge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; line-height: 1; color: var(--gold); letter-spacing: 0.05em;
+  }
+  .badge-label {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 400;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 3rem; }
+  .section-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; font-weight: 400;
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    letter-spacing: 0.03em; line-height: 1;
+  }
+  .section-line {
+    width: 50px; height: 2px; background: var(--gold); margin: 1.5rem 0 2.5rem;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--charcoal);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.8; color: rgba(245,242,237,0.65);
+    font-weight: 300; margin-bottom: 1.2rem;
+  }
+  .about-text p strong { color: var(--white); font-weight: 500; }
+  .about-highlights {
+    display: flex; flex-direction: column; gap: 1px;
+  }
+  .highlight-item {
+    background: var(--mid);
+    padding: 1.5rem 1.75rem;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+  .highlight-item:hover { border-color: var(--gold); background: #333; }
+  .highlight-item h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem; letter-spacing: 0.08em; margin-bottom: 0.4rem;
+    color: var(--white);
+  }
+  .highlight-item p {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.5; font-weight: 300;
+  }
+
+  /* AMENITIES */
+  #amenities { background: var(--black); }
+  .amenities-header { margin-bottom: 3rem; }
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: rgba(245,242,237,0.06);
+  }
+  .amenity-card {
+    background: var(--black); padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .amenity-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .amenity-card:hover { background: #111; }
+  .amenity-card:hover::before { transform: scaleX(1); }
+  .amenity-icon {
+    font-size: 2rem; margin-bottom: 1.2rem; display: block;
+    filter: grayscale(0.3);
+  }
+  .amenity-card h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
+    letter-spacing: 0.08em; margin-bottom: 0.6rem; color: var(--white);
+  }
+  .amenity-card p {
+    font-size: 0.82rem; line-height: 1.6; color: var(--muted); font-weight: 300;
+  }
+  .coming-soon-badge {
+    display: inline-block; background: rgba(245,137,10,0.15);
+    color: var(--gold); font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem; border: 1px solid rgba(245,137,10,0.3);
+  }
+
+  /* EXPERIENCE */
+  #experience {
+    background: var(--charcoal);
+    display: grid; grid-template-columns: 5fr 4fr; gap: 5rem; align-items: start;
+  }
+  .experience-list { margin-top: 1rem; }
+  .exp-item {
+    display: flex; gap: 1.5rem; padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(245,242,237,0.07);
+    align-items: flex-start;
+  }
+  .exp-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem;
+    color: rgba(245,137,10,0.25); line-height: 1; min-width: 2.5rem;
+    letter-spacing: 0.02em;
+  }
+  .exp-text h3 {
+    font-size: 1rem; font-weight: 500; margin-bottom: 0.35rem;
+  }
+  .exp-text p {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.55; font-weight: 300;
+  }
+  .experience-aside {
+    background: var(--mid); padding: 2.5rem 2rem; margin-top: 3rem;
+  }
+  .aside-quote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem; line-height: 1.2; letter-spacing: 0.04em;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .aside-detail {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.65; font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .aside-detail + .aside-detail { padding-top: 0.75rem; border-top: 1px solid rgba(245,242,237,0.07); }
+
+  /* LOCATION */
+  #location { background: var(--black); text-align: center; }
+  #location h2 { margin: 0 auto 0.5rem; }
+  #location .section-line { margin: 1.5rem auto 1rem; }
+  .location-sub {
+    font-size: 1rem; color: var(--muted); margin-bottom: 3rem;
+    font-weight: 300; letter-spacing: 0.03em;
+  }
+  .location-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px; background: rgba(245,242,237,0.06);
+    max-width: 900px; margin: 0 auto 3rem;
+  }
+  .loc-card {
+    background: var(--black); padding: 2rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .loc-card:hover { background: #111; }
+  .loc-card .icon { font-size: 1.5rem; margin-bottom: 0.8rem; display: block; }
+  .loc-card h4 {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem; font-weight: 400;
+  }
+  .loc-card p { font-size: 0.88rem; color: var(--white); font-weight: 300; line-height: 1.5; }
+
+  /* CTA */
+  #cta {
+    background: var(--gold);
+    padding: 5rem 3rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #cta::before {
+    content: 'ELEVATE';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18vw; font-weight: 400; letter-spacing: -0.02em;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: rgba(10,10,10,0.06); white-space: nowrap; pointer-events: none;
+  }
+  #cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--black); letter-spacing: 0.03em; line-height: 1;
+    margin-bottom: 1rem; position: relative;
+  }
+  #cta p {
+    font-size: 1rem; color: rgba(10,10,10,0.65);
+    max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7;
+    font-weight: 300; position: relative;
+  }
+  .btn-dark {
+    background: var(--black); color: var(--gold);
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+    padding: 1rem 2.5rem; text-decoration: none;
+    transition: transform 0.15s; display: inline-block; position: relative;
+  }
+  .btn-dark:hover { transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 2.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(245,242,237,0.07);
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
+    letter-spacing: 0.12em; color: var(--gold); text-decoration: none;
+  }
+  .footer-logo span { color: var(--white); }
+  footer p { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.72rem; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* SCROLL ANIMATION */
+  .reveal {
+    opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #about, #experience { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-content { padding: 8rem 1.5rem 3rem; }
+    .hero-badges { padding: 1.5rem; flex-wrap: wrap; gap: 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" style="display:flex;align-items:center;"><img src="images/img_01.png" alt="Elevate Lifestyle and Fitness" style="height:48px; width:auto;"></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#gallery">Gallery</a></li><li><a href="#community">Community</a></li><li><a href="#location">Location</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Join Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Fitness Center · Quezon City</div>
+    <h1>Train.<br><em>Elevate.</em>Live.</h1>
+    <p class="hero-sub">More than a gym — a complete fitness and lifestyle destination in the heart of Quezon City. Train hard, recover well, and enjoy a premium experience close to home.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">Get Started</a>
+      <a href="#amenities" class="btn-ghost">Explore Amenities</a>
+    </div>
+  </div>
+  <div class="hero-badges">
+    <div class="badge">
+      <span class="badge-num">143</span>
+      <span class="badge-label">Susano Road, QC</span>
+    </div>
+    <div class="badge">
+      <span class="badge-num">100%</span>
+      <span class="badge-label">Air-conditioned</span>
+    </div>
+    <div class="badge">
+      <span class="badge-num">FREE</span>
+      <span class="badge-label">Parking</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <p class="section-eyebrow">Who We Are</p>
+    <h2>Built for Filipinos Who Want More</h2>
+    <div class="section-line"></div>
+    <p>Elevate Life & Fitness was created for gym-goers who refuse to settle for the ordinary. We've built a space where every detail — from the equipment to the atmosphere — is designed to push you further and keep you coming back.</p>
+    <p>Whether you're just starting your fitness journey or you're a seasoned athlete, Elevate gives you the tools, guidance, and environment to become the best version of yourself. <strong>This is where Quezon City comes to train.</strong></p>
+    <a href="#amenities" class="btn-ghost" style="margin-top:1rem; display:inline-block;">See What We Offer →</a>
+  </div>
+  <div class="about-highlights reveal">
+    <div class="highlight-item">
+      <h3>Modern Equipment</h3>
+      <p>Premium machines and free weights for every training goal — strength, cardio, conditioning, and beyond.</p>
+    </div>
+    <div class="highlight-item">
+      <h3>Expert Trainers</h3>
+      <p>Certified personal trainers who build customized programs and keep you accountable every step of the way.</p>
+    </div>
+    <div class="highlight-item">
+      <h3>Wellness First</h3>
+      <p>Sauna, Pilates, and yoga — because recovery and balance are just as important as the workout itself.</p>
+    </div>
+    <div class="highlight-item">
+      <h3>Lifestyle Space</h3>
+      <p>A premium lounge and upcoming lifestyle amenities that make Elevate a destination, not just a gym.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="amenities-header reveal">
+    <p class="section-eyebrow">Facilities & Amenities</p>
+    <h2>Everything You Need. All in One Place.</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity-card reveal" style="padding:0;overflow:hidden;">
+      <img src="images/img_02.png" alt="Gym floor with weights and machines" style="width:100%;height:180px;object-fit:cover;display:block;opacity:0.85;">
+      <div style="padding:1.75rem 2rem 2rem;">
+        <span class="amenity-icon">🏋️</span>
+        <h3>Gym Floor</h3>
+        <p>Premium machines, free weights, and a full dumbbell rack for strength training, conditioning, and everything in between.</p>
+      </div>
+    </div>
+    <div class="amenity-card reveal">
+      <span class="amenity-icon">🧑‍💼</span>
+      <h3>Personal Training</h3>
+      <p>Work with certified trainers who design programs around your goals, correct your form, and keep you motivated.</p>
+    </div>
+    <div class="amenity-card reveal">
+      <span class="amenity-icon">🧖</span>
+      <h3>Sauna</h3>
+      <p>Unwind and recover with our premium sauna. Reduce muscle soreness, de-stress, and support your overall wellness.</p>
+    </div>
+    <div class="amenity-card reveal" style="padding:0;overflow:hidden;">
+      <img src="images/img_03.png" alt="Spin bikes and Pilates reformers studio" style="width:100%;height:180px;object-fit:cover;display:block;opacity:0.85;">
+      <div style="padding:1.75rem 2rem 2rem;">
+        <span class="amenity-icon">🧘</span>
+        <h3>Group Classes</h3>
+        <p>Yoga, Zumba, Spin, Pilates, and Taekwondo — expert-led classes in a dedicated studio. Every energy level, every fitness goal.</p>
+      </div>
+    </div>
+    <div class="amenity-card reveal" style="padding:0;overflow:hidden;">
+      <img src="images/img_04.png" alt="Lounge area with couch and natural light" style="width:100%;height:180px;object-fit:cover;display:block;opacity:0.85;">
+      <div style="padding:1.75rem 2rem 2rem;">
+        <span class="amenity-icon">🛋️</span>
+        <h3>Premium Lounge</h3>
+        <p>A bright, comfortable lounge area to relax before or after your session. Comfort that matches the quality of your workout.</p>
+      </div>
+    </div>
+    <div class="amenity-card reveal" style="padding:0;overflow:hidden;">
+      <img src="images/img_05.png" alt="Air-conditioned gym floor" style="width:100%;height:180px;object-fit:cover;display:block;opacity:0.85;">
+      <div style="padding:1.75rem 2rem 2rem;">
+        <span class="amenity-icon">❄️</span>
+        <h3>Full A/C</h3>
+        <p>Train comfortably year-round in our fully air-conditioned facility — a must for Metro Manila's warm climate.</p>
+      </div>
+    </div>
+    <div class="amenity-card reveal">
+      <span class="amenity-icon">💆</span>
+      <div class="coming-soon-badge">Coming Soon</div>
+      <h3>Massage Therapy</h3>
+      <p>An in-house licensed massage therapist coming soon — to help you recover faster, relieve muscle tension, and feel your best.</p>
+    </div>
+    <div class="amenity-card reveal" style="position:relative; overflow:hidden; padding:0;">
+      <img src="images/img_06.png" alt="FIBA Court under construction" style="width:100%; height:200px; object-fit:cover; display:block; opacity:0.55;">
+      <div style="padding:1.75rem 2rem 2rem;">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <h3 style="margin-top:0.25rem;">FIBA-Standard Court</h3>
+        <p>A full FIBA-size basketball court currently under construction. Rates will be released soon — watch this space.</p>
+      </div>
+    </div>
+    <div class="amenity-card reveal">
+      <span class="amenity-icon">🎱</span>
+      <h3>Billiards Room</h3>
+      <div class="coming-soon-badge">Coming Soon</div>
+      <p>A dedicated billiards room to unwind, connect, and spend quality time with friends and fellow members.</p>
+    </div>
+    <div class="amenity-card reveal">
+      <span class="amenity-icon">☕</span>
+      <h3>Coffee Shop</h3>
+      <div class="coming-soon-badge">Coming Soon</div>
+      <p>An in-house café for pre-workout fuel and post-session catch-ups. Community over every cup.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <p class="section-eyebrow">The Elevate Experience</p>
+    <h2>How It Works</h2>
+    <div class="section-line"></div>
+    <div class="experience-list">
+      <div class="exp-item">
+        <span class="exp-num">01</span>
+        <div class="exp-text">
+          <h3>Choose Your Membership</h3>
+          <p>Pick the plan that fits your lifestyle — daily, monthly, or long-term. Flexible options for students, professionals, and families.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-num">02</span>
+        <div class="exp-text">
+          <h3>Get Assessed</h3>
+          <p>Our trainers conduct an initial fitness assessment to understand your goals and design a personalized approach just for you.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-num">03</span>
+        <div class="exp-text">
+          <h3>Train & Recover</h3>
+          <p>Use world-class equipment, join Yoga, Zumba, or Spin classes, get a massage, and wind down in the sauna. Every session is complete.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-num">04</span>
+        <div class="exp-text">
+          <h3>Enjoy the Lifestyle</h3>
+          <p>Relax in the lounge, grab a coffee, shoot hoops, or play billiards. Elevate is a place worth staying in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="experience-aside reveal">
+    <p class="aside-quote">"Train Hard. Recover Well. Live Better."</p>
+    <p class="aside-detail">Elevate Life & Fitness is not just a gym — it is a complete lifestyle destination built for Filipinos who take their health seriously and deserve a premium experience close to home.</p>
+    <p class="aside-detail">Located at <strong style="color:var(--white)">143 Susano Road, Quezon City</strong> — accessible and convenient for residents across the metro.</p>
+    <p class="aside-detail">Free parking available for cars and motorcycles. Because getting here should be the easy part.</p>
+    <a href="#cta" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">Start Today</a>
+  </div>
+</section>
+
+
+<!-- GALLERY -->
+<section id="gallery" style="background:#111; padding:5rem 3rem;">
+  <div class="reveal" style="margin-bottom:2.5rem;">
+    <p class="section-eyebrow">Inside Elevate</p>
+    <h2>See the Space</h2>
+    <div class="section-line"></div>
+    <p style="font-size:1rem;color:rgba(245,242,237,0.55);max-width:520px;font-weight:300;line-height:1.7;">Every corner of Elevate was designed with purpose — premium equipment, real atmosphere, and spaces that make you want to come back.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto auto;gap:6px;" class="reveal">
+    <div style="grid-column:1/6;grid-row:1/2;overflow:hidden;">
+      <img src="images/img_07.png" alt="Weights room" style="width:100%;height:320px;object-fit:cover;display:block;transition:transform 0.4s;filter:brightness(0.9);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="grid-column:6/13;grid-row:1/2;overflow:hidden;">
+      <img src="images/img_08.png" alt="Cardio equipment" style="width:100%;height:320px;object-fit:cover;display:block;transition:transform 0.4s;filter:brightness(0.9);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="grid-column:1/5;grid-row:2/3;overflow:hidden;">
+      <img src="images/img_09.png" alt="Spin and Pilates studio" style="width:100%;height:260px;object-fit:cover;display:block;transition:transform 0.4s;filter:brightness(0.9);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="grid-column:5/9;grid-row:2/3;overflow:hidden;">
+      <img src="images/img_10.png" alt="Strength training area" style="width:100%;height:260px;object-fit:cover;display:block;transition:transform 0.4s;filter:brightness(0.9);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="grid-column:9/13;grid-row:2/3;overflow:hidden;">
+      <img src="images/img_11.png" alt="Lounge area" style="width:100%;height:260px;object-fit:cover;display:block;transition:transform 0.4s;filter:brightness(0.9);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+  </div>
+</section>
+
+
+<!-- COMMUNITY -->
+<section id="community" style="background:var(--black);padding:5rem 3rem;">
+  <div class="reveal" style="margin-bottom:3rem;">
+    <p class="section-eyebrow">Real Members. Real Results.</p>
+    <h2>The Elevate Community</h2>
+    <div class="section-line"></div>
+    <p style="font-size:1rem;color:rgba(245,242,237,0.55);max-width:560px;font-weight:300;line-height:1.7;">Elevate isn't just a gym — it's a community of people who show up, support each other, and grow together. From spinning classes to taekwondo, there's a place here for everyone.</p>
+  </div>
+
+  <!-- Class cards grid -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(245,242,237,0.06);" class="reveal">
+
+    <div style="background:var(--black);overflow:hidden;position:relative;cursor:default;" onmouseover="this.querySelector('img').style.transform='scale(1.05)'" onmouseout="this.querySelector('img').style.transform='scale(1)'">
+      <div style="overflow:hidden;height:280px;">
+        <img src="images/img_12.png" alt="Spinning class" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;">
+      </div>
+      <div style="padding:1.25rem 1.5rem;border-top:2px solid var(--gold);">
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.3rem;">Spinning</h3>
+        <p style="font-size:0.8rem;color:var(--muted);font-weight:300;">High-energy cycling sessions set to music. Burn calories and build endurance in every ride.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--black);overflow:hidden;position:relative;cursor:default;" onmouseover="this.querySelector('img').style.transform='scale(1.05)'" onmouseout="this.querySelector('img').style.transform='scale(1)'">
+      <div style="overflow:hidden;height:280px;">
+        <img src="images/img_13.png" alt="Zumba class" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;">
+      </div>
+      <div style="padding:1.25rem 1.5rem;border-top:2px solid var(--gold);">
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.3rem;">Zumba</h3>
+        <p style="font-size:0.8rem;color:var(--muted);font-weight:300;">Dance your way to fitness. Fun, upbeat, and open to all levels — no dance experience required.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--black);overflow:hidden;position:relative;cursor:default;" onmouseover="this.querySelector('img').style.transform='scale(1.05)'" onmouseout="this.querySelector('img').style.transform='scale(1)'">
+      <div style="overflow:hidden;height:280px;">
+        <img src="images/img_14.png" alt="Pilates class" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;">
+      </div>
+      <div style="padding:1.25rem 1.5rem;border-top:2px solid var(--gold);">
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.3rem;">Pilates</h3>
+        <p style="font-size:0.8rem;color:var(--muted);font-weight:300;">Reformer Pilates for core strength, posture, and full-body control. Small classes for focused results.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--black);overflow:hidden;position:relative;cursor:default;" onmouseover="this.querySelector('img').style.transform='scale(1.05)'" onmouseout="this.querySelector('img').style.transform='scale(1)'">
+      <div style="overflow:hidden;height:280px;">
+        <img src="images/img_15.png" alt="Yoga class" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;">
+      </div>
+      <div style="padding:1.25rem 1.5rem;border-top:2px solid var(--gold);">
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.3rem;">Yoga</h3>
+        <p style="font-size:0.8rem;color:var(--muted);font-weight:300;">Guided yoga sessions in the Pilates & Studio space. Build flexibility, reduce stress, and find balance.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--black);overflow:hidden;position:relative;cursor:default;" onmouseover="this.querySelector('img').style.transform='scale(1.05)'" onmouseout="this.querySelector('img').style.transform='scale(1)'">
+      <div style="overflow:hidden;height:280px;">
+        <img src="images/img_16.png" alt="Taekwondo summer class" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;">
+      </div>
+      <div style="padding:1.25rem 1.5rem;border-top:2px solid var(--gold);">
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.3rem;">Taekwondo</h3>
+        <p style="font-size:0.8rem;color:var(--muted);font-weight:300;">Martial arts classes for kids and adults. Discipline, strength, and confidence — all in one program.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--black);overflow:hidden;position:relative;cursor:default;" onmouseover="this.querySelector('img').style.transform='scale(1.05)'" onmouseout="this.querySelector('img').style.transform='scale(1)'">
+      <div style="overflow:hidden;height:280px;">
+        <img src="images/img_17.png" alt="Gym community members" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;">
+      </div>
+      <div style="padding:1.25rem 1.5rem;border-top:2px solid var(--gold);">
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.3rem;">The Community</h3>
+        <p style="font-size:0.8rem;color:var(--muted);font-weight:300;">Real people, real progress. Elevate is where friendships are built and fitness goals are crushed — together.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <p class="section-eyebrow reveal">Find Us</p>
+  <h2 class="reveal">Right in the Heart of<br>Quezon City</h2>
+  <div class="section-line"></div>
+  <p class="location-sub reveal">Easy to reach, easy to park, and impossible to leave.</p>
+  <div class="location-grid reveal">
+    <div class="loc-card">
+      <span class="icon">📍</span>
+      <h4>Address</h4>
+      <p>143 Susano Road<br>Quezon City, 1117<br>Metro Manila</p>
+    </div>
+    <div class="loc-card">
+      <span class="icon">🚗</span>
+      <h4>Parking</h4>
+      <p>Free parking for cars and motorcycles available on-site for all members.</p>
+    </div>
+    <div class="loc-card">
+      <span class="icon">🕐</span>
+      <h4>Hours</h4>
+      <p>Open daily<br><strong style="color:#f5f2ed;">6:00 AM – 10:00 PM</strong></p>
+    </div>
+    <div class="loc-card">
+      <span class="icon">📞</span>
+      <h4>Contact</h4>
+      <p>Inquire about membership, classes, and personal training via our contact form or drop by in person.</p>
+    </div>
+  </div>
+  <a href="#cta" class="btn-primary reveal">Book a Visit</a>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2 class="reveal">Ready to Elevate?</h2>
+  <p class="reveal">Join Quezon City's most complete fitness and lifestyle destination. Your strongest self is waiting.</p>
+  <a href="mailto:info@elevatelifefitness.ph" class="btn-dark reveal">Inquire About Membership</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo" style="display:flex;align-items:center;"><img src="images/img_18.png" alt="Elevate Lifestyle and Fitness" style="height:36px; width:auto;"></a>
+  <p>143 Susano Road, Quezon City 1117 · Metro Manila</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#location">Location</a>
+    <a href="#cta">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
